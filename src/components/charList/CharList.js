@@ -3,6 +3,7 @@ import MarvelService from "../../services/MarvelService";
 import ErrorMessage from "../errorMessage/ErrorMessage";
 import Spinner from "../spinner/Spinner";
 import {Component} from "react";
+import useMarvelService from "../../services/MarvelService";
 
 class CharList extends Component {
     state = {
@@ -14,7 +15,7 @@ class CharList extends Component {
         charsEnd: false
     }
 
-    marvelService = new MarvelService();
+    marvelService = useMarvelService(); 
 
     // когда компонент отрендарился
     componentDidMount() {

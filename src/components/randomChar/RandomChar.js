@@ -1,16 +1,16 @@
 import './randomChar.scss';
 import mjolnir from '../../resources/img/mjolnir.png';
 import {Component} from "react";
-import MarvelService from "../../services/MarvelService";
+import useMarvelService from "../../services/MarvelService";
 import ErrorMessage from "../errorMessage/ErrorMessage";
 import Spinner from "../spinner/Spinner";
 
-class RandomChar extends Component {
+const RandomChar = () => {
     constructor(props) {
         super(props);
     }
 
-    marvelService = new MarvelService();
+    marvelService = useMarvelService();
 
     state = {
         char: {},
