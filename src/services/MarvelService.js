@@ -8,18 +8,8 @@ const useMarvelService = () => {
     const _apiKey = 'apikey=ad22b17d3ed1f014638c7eb28c843c44';
     const _baseOffset = '210';
 
-    const getResource = async (url) => {
-        let res = await fetch(url);
-
-        if(!res.ok) {
-            throw new Error(`Could not fetch ${url}, status: ${res.status}`);
-        }
-
-        return await res.json();
-    }
-
     const getAllCharacters = async (offset = _baseOffset) => {
-        const res =  await request(`${_apiBase}characters?limit=9&offset=${offset}&${this._apiKey}`);
+        const res =  await request(`${_apiBase}characters?limit=9&offset=${offset}&${_apiKey}`);
         return res.data.results.map(_transformCharacter);
     }
 

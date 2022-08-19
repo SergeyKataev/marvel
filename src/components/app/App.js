@@ -1,52 +1,36 @@
 import AppHeader from "../appHeader/AppHeader";
-import RandomChar from "../randomChar/RandomChar";
-import CharList from "../charList/CharList";
-import CharInfo from "../charInfo/CharInfo";
 import 'bootstrap/dist/css/bootstrap.css';
-
-import decoration from '../../resources/img/vision.png';
+import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import React, {Component} from "react";
-import ErrorBoundary from "../errorBoundary/ErrorBoundary";
+import {MainPage, ComicsPage} from '../pages';
 
-class App extends Component {
+const App = () => {
 
-    state = {
-        selectedChad: null
-    }
-
-    onCharSelected = (id) => {
-        this.setState({
-            selectedChad: id
-        });
-    }
-
-    render() {
-        return (
+    return (
+        <Router>
             <div className="app">
-                <DynamicGreetings color={'primary'}>
-                    <h2>This weel was hard</h2>
-                    <h2>Hello world!</h2>
-                </DynamicGreetings>
-                <Counter render={counter=> (
-                    <Message counter={counter}/>
-                )}/>
-                <br/>
-                <br/>
-                <br/>
+                {/*<DynamicGreetings color={'primary'}>*/}
+                {/*    <h2>This weel was hard</h2>*/}
+                {/*    <h2>Hello world!</h2>*/}
+                {/*</DynamicGreetings>*/}
+                {/*<Counter render={counter=> (*/}
+                {/*    <Message counter={counter}/>*/}
+                {/*)}/>*/}
+                {/*<br/>*/}
+                {/*<br/>*/}
+                {/*<br/>*/}
                 <AppHeader/>
                 <main>
-                    <RandomChar/>
-                    {/*<div className="char__content">*/}
-                    {/*    <CharList onCharSelected={this.onCharSelected}/>*/}
-                    {/*    <ErrorBoundary>*/}
-                    {/*        <CharInfo charId={this.state.selectedChad}/>*/}
-                    {/*    </ErrorBoundary>*/}
-                    {/*</div>*/}
-                    <img className="bg-decoration" src={decoration} alt="vision"/>
+                    <Routes>
+                        <Route path="/" element={<MainPage/>}/>
+                        <Route path="/comics" element={<ComicsPage/>}/>
+                    </Routes>
                 </main>
             </div>
-        )
-    }
+        </Router>
+
+    )
+
 
 }
 
